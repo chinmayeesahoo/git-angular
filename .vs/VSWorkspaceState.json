@@ -4,8 +4,9 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\dishdetail",
-    "\\src\\app\\menu"
+    "\\src\\app\\menu",
+    "\\src\\app\\shared"
   ],
-  "SelectedNode": "\\src\\app\\menu\\menu.component.html",
+  "SelectedNode": "\\src\\app\\menu\\menu.component.ts",
   "PreviewInSolutionExplorer": false
 }
