@@ -2,11 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\app",
-    "\\src\\app\\dishdetail",
-    "\\src\\app\\menu",
-    "\\src\\app\\shared"
+    "\\src\\app"
   ],
-  "SelectedNode": "\\src\\app\\menu\\menu.component.ts",
+  "SelectedNode": "\\src\\app\\app.component.scss",
   "PreviewInSolutionExplorer": false
 }
