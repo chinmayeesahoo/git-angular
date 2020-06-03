@@ -3,9 +3,9 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\footer",
+    "\\src\\app\\app-routing",
     "\\src\\app\\header"
   ],
-  "SelectedNode": "\\src\\app\\header\\header.component.ts",
+  "SelectedNode": "\\src\\app\\app-routing\\routes.ts",
   "PreviewInSolutionExplorer": false
 }
