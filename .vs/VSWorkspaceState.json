@@ -3,9 +3,12 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\app-routing",
-    "\\src\\app\\header"
+    "\\src\\app\\about",
+    "\\src\\app\\home",
+    "\\src\\app\\menu",
+    "\\src\\app\\services",
+    "\\src\\app\\shared"
   ],
-  "SelectedNode": "\\src\\app\\app-routing\\routes.ts",
+  "SelectedNode": "\\src\\app\\about\\about.component.ts",
   "PreviewInSolutionExplorer": false
 }
