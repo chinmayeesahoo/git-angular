@@ -38,6 +38,31 @@
           <h1 matLine>-- {{comment.author}}, {{comment.date | date}}</h1>
         </mat-list-item>
       </mat-list>
+        <form novalidate [formGroup]="commentForm" #fform="ngForm" (ngSubmit)="onSubmit()">
+          <mat-list>
+            <mat-list-item *ngIf="commentForm.status == 'VALID' ">
+              <h1 matLine> {{commentForm.value.comment}} </h1>
+              <h1 matLine> {{commentForm.value.rating}} Stars </h1>
+              <h1 matLine>{{commentForm.value.author}}, {{comment.date | date}}</h1>
+            </mat-list-item>
+          </mat-list>
+            <p>
+              <mat-form-field fxFlex class="full-width">
+                <input matInput formControlName="author" placeholder="Name" type="text" required>
+                <mat-error *ngIf="formErrors.author">{{formErrors.author}}</mat-error>
+              </mat-form-field>
+            </p>
+            <p>
+              <mat-slider formControlName="rating"  min={{min}} max={{max}} step={{step}} value={{value}} thumbLabel="{{thumbLabel}}" tickInterval="{{getSliderTickInterval()}}" ngModel="{{value}}"></mat-slider>
+            </p>
+            <p>
+              <mat-form-field fxFlex class="full-width">
+                <textarea matInput formControlName="comment" placeholder="Your Comment" rows=10 required></textarea>
+                <mat-error *ngIf="formErrors.comment">{{formErrors.comment}}</mat-error>
+              </mat-form-field>
+            </p>
+            <button type="submit" mat-button class="background-primary text-floral-white">Submit</button>
+        </form>
     </div>
   </div>
 </div>
