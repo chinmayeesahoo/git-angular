@@ -15,6 +15,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class DishdetailComponent implements OnInit {
   dishIds: string[];
+  errMess: string;
   prev: string;
   next: string;
   today = new Date();
@@ -26,7 +27,7 @@ export class DishdetailComponent implements OnInit {
   comment: Comment;
   formErrors = {
     'author': '',
-    'rating': 5,
+   // 'rating': 5,
     'comment': '',
   };
   validationMessages = {
@@ -63,7 +64,8 @@ export class DishdetailComponent implements OnInit {
   ngOnInit() {
     this.dishservice.getDishIds().subscribe(dishIds => this.dishIds = dishIds);
     this.route.params.pipe(switchMap((params: Params) => this.dishservice.getDish(params['id'])))
-      .subscribe(dish => { this.dish = dish; this.setPrevNext(dish.id); });
+      .subscribe(dish => { this.dish = dish; this.setPrevNext(dish.id); }
+      , errmess=>this.errMess=<any>errmess);
   }
   goBack(): void {
     this.location.back();

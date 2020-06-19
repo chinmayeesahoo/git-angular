@@ -16,6 +16,7 @@ export class MenuComponent implements OnInit {
 
   //dishes: Dish[] = DISHES;
   dishes: Dish[];
+  errMess: string;
   //selectedDish: Dish;
   
   constructor(private dishService: DishService, @Inject('BaseURL') private BaseURL) { }
@@ -23,7 +24,8 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
     //this.dishes = this.dishService.getDishes();
     this.dishService.getDishes()
-      .subscribe(dishes => this.dishes = dishes);
+      .subscribe(dishes => this.dishes = dishes,
+    errmess => this.errMess = <any>errmess);
   }
   //onSelect(dish: Dish) {
   //  this.selectedDish = dish;
