@@ -3,9 +3,12 @@
     "",
     "\\src",
     "\\src\\app",
+    "\\src\\app\\contact",
     "\\src\\app\\dishdetail",
-    "\\src\\app\\services"
+    "\\src\\app\\home",
+    "\\src\\app\\services",
+    "\\src\\app\\shared"
   ],
-  "SelectedNode": "\\src\\app\\services\\dish.service.ts",
+  "SelectedNode": "\\src\\app\\contact\\contact.component.ts",
   "PreviewInSolutionExplorer": false
 }

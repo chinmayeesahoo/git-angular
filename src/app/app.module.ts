@@ -31,6 +31,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 import { ProcessHTTPMsgService } from './services/process-httpmsg.service';
+import { FeedbackService } from './services/feedback.service';
 
 
 import { MatSelectModule } from '@angular/material/select';
@@ -83,6 +84,7 @@ import { HighlightDirective } from './directives/highlight.directive';
     LeaderService,
     { provide: 'BaseURL', useValue: baseURL },
     ProcessHTTPMsgService,
+    FeedbackService
   ],
   bootstrap: [AppComponent],
   entryComponents:[LoginComponent],

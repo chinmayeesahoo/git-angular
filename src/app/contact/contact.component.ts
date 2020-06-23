@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Feedback, ContactType } from '../shared/feedback';
-import { flyInOut } from '../animations/app.animation';
+import { flyInOut, expand, visibility } from '../animations/app.animation';
+import { FeedbackService } from '../services/feedback.service';
 
 @Component({
   selector: 'app-contact',
@@ -12,7 +13,9 @@ import { flyInOut } from '../animations/app.animation';
     'style': 'display: block;'
   },
   animations: [
-    flyInOut()
+    flyInOut(),
+    expand(),
+    visibility()
   ]
 })
 export class ContactComponent implements OnInit {
@@ -20,6 +23,12 @@ export class ContactComponent implements OnInit {
   feedbackForm: FormGroup;
   feedback: Feedback;
   contactType = ContactType;
+  errMess: string;
+  submitted: boolean;
+  showloader: boolean;
+  visibility = 'shown';
+
+
   formErrors = {
     'firstname': '',
     'lastname': '',
@@ -47,11 +56,13 @@ export class ContactComponent implements OnInit {
     },
   };
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private feedbackservice: FeedbackService) {
     this.createForm();
+    
   }
 
   ngOnInit() {
+    
   }
   createForm(): void {
     this.feedbackForm = this.fb.group({
@@ -71,18 +82,32 @@ export class ContactComponent implements OnInit {
   }
 
   onSubmit() {
-    this.feedback = this.feedbackForm.value;
-    console.log(this.feedback);
-    this.feedbackForm.reset({
-      firstname: '',
-      lastname: '',
-      telnum: '',
-      email: '',
-      agree: false,
-      contacttype: 'None',
-      message: ''
-    });
-    this.feedbackFormDirective.resetForm();
+    if (this.feedbackForm.valid) {
+      this.visibility = 'hidden'
+      this.submitted = true;
+      this.feedback = this.feedbackForm.value;
+      console.log(this.feedback);
+      this.feedbackservice.submitFeedback(this.feedback)
+        .subscribe(feedback => {
+          this.feedback = feedback;
+          setTimeout(() => {
+            this.submitted = false;
+            this.visibility = 'shown'
+          }, 5000);
+        },
+          errmess => { this.feedback = null; this.errMess = <any>errmess; });
+
+      this.feedbackForm.reset({
+        firstname: '',
+        lastname: '',
+        telnum: '',
+        email: '',
+        agree: false,
+        contacttype: 'None',
+        message: ''
+      });
+      this.feedbackFormDirective.resetForm();
+    }
   }
 
   onValueChanged(data?: any) {
